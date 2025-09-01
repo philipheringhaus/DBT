@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: stg_customer
+    description: staging view for customers from jaffle_shop customer_id is primary key
+    columns:
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_orders
+    description: staging view from orders from jaffle_shop, order_id is primary key
+    columns:
+      - name: order_id
+        tests:
+          - unique
+          - not_null
