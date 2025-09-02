@@ -9,7 +9,7 @@ models:
           - unique
           - not_null
 
-  - name: stg_orders
+  - name: stg_order
     description: staging view from orders from jaffle_shop, order_id is primary key
     columns:
       - name: order_id
