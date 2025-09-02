@@ -11,3 +11,8 @@ sources:
           freshness:
             warn_after: {count: 12, period: day}
             error_after: {count: 24, period: day}
+        columns:
+          - name: id
+            data_tests:
+              - unique
+              - not_null
