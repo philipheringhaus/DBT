@@ -4,12 +4,27 @@ sources:
   - name: jaffle_shop
     database: RAW
     schema: jaffle_shop
+    config:
+          freshness:
+            warn_after:
+              count: 14
+              period: day
+            error_after:
+              count: 21
+              period: day
+          loaded_at_field: _etl_loaded_at
     tables:
       - name: customers
+        freshness: null
+        columns:
+          - name: id
+            data_tests:
+              - unique
+              - not_null
+        
       - name: orders
-
-  - name: stripe
-    database: RAW
-    schema: stripe
-    tables: 
-      - name: payments
+        columns:
+          - name: id
+            data_tests:
+              - unique
+              - not_null

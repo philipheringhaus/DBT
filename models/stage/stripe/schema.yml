@@ -1,0 +1,12 @@
+version: 2
+
+
+models:
+  - name: stg_payment
+    description: staging view for payment
+    columns:
+      - name: payment_id
+        description: Primary key for payments
+        tests:
+          - unique
+          - not_null

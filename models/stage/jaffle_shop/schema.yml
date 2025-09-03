@@ -2,17 +2,36 @@ version: 2
 
 models:
   - name: stg_customer
-    description: staging view for customers from jaffle_shop customer_id is primary key
+    description: staging view for customers from jaffle_shop 
     columns:
       - name: customer_id
+        description: customer_id is primary key
         tests:
           - unique
           - not_null
+          
 
-  - name: stg_orders
-    description: staging view from orders from jaffle_shop, order_id is primary key
+  - name: stg_order
+    description: staging view from orders from jaffle_shop
     columns:
       - name: order_id
+        description: order_id is primary key
         tests:
           - unique
           - not_null
+      - name: status
+        description: "{{ doc('order_status') }}"
+        tests:
+          - accepted_values:
+              values:
+                - completed
+                - shipped
+                - returned
+                - return_pending
+                - placed
+      - name: customer_id
+        description: foreign_key to customer
+        tests:
+          - relationships:
+              field: customer_id
+              to: ref('stg_customer')
